@@ -3,6 +3,8 @@ var db = new JsonDB("myDataBase", true, false);
 module.exports = {
   getMovies:function(qry){
     var movies = db.getData('/movies');
+    if (!qry) return movies;
+
     if (qry.sort) {
       movies.sort((a,b)=>a[qry.sort] > b[qry.sort])
     }
